@@ -1,10 +1,1098 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Mini Women</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiniWoven - Handcrafted Crochet Creations</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #ff6b8b;
+            --secondary-color: #6b5b54;
+            --accent-color: #ffd166;
+            --light-color: #faf7f2;
+            --text-color: #5a4e4e;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #ffd1dc 0%, #ffa8ba 100%);
+            padding: 1rem;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo-icon {
+            font-size: 2rem;
+        }
+        
+        .tagline {
+            font-style: italic;
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            cursor: pointer;
+        }
+        
+        .contact-info {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-info a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.9rem;
+        }
+        
+        .contact-info a:hover {
+            color: var(--primary-color);
+        }
+        
+        .cart-icon {
+            position: relative;
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            cursor: pointer;
+            margin-left: 1rem;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            flex: 1;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f0e6dd"/><path d="M0 50 L100 50 M50 0 L50 100" stroke="%23ffd1dc" stroke-width="1"/></svg>');
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: var(--secondary-color);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #ff4d73;
+        }
+        
+        .about-section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .about-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            text-align: left;
+        }
+        
+        .about-text {
+            color: var(--secondary-color);
+        }
+        
+        .offerings {
+            margin-top: 1.5rem;
+        }
+        
+        .offerings li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-img {
+            height: 200px;
+            background-color: #ffe2e9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
+        }
+        
+        .upload-overlay {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-info h3 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-info p {
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            flex: 1;
+        }
+        
+        .price {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .color-options, .size-options {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .color-option {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .color-option.selected {
+            border-color: var(--primary-color);
+        }
+        
+        .size-option {
+            padding: 0.3rem 0.6rem;
+            border: 1px solid var(--accent-color);
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .size-option.selected {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .add-to-cart {
+            width: 100%;
+            padding: 0.7rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 1rem;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #ff4d73;
+        }
+        
+        .policy {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .policy h2 {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .policy-item {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+            border-left: 3px solid var(--accent-color);
+        }
+        
+        .policy-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .checkout-section {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+            display: none;
+        }
+        
+        .checkout-section h2 {
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .checkout-items {
+            margin-bottom: 2rem;
+        }
+        
+        .checkout-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ffe2e9;
+            flex-wrap: wrap;
+        }
+        
+        .checkout-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 1.2rem;
+            padding: 1rem 0;
+        }
+        
+        .payment-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .payment-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            border: 1px solid var(--accent-color);
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .payment-option.selected {
+            border-color: var(--primary-color);
+            background-color: #fff5f7;
+        }
+        
+        .contact-section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .contact-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .contact-method {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.5rem;
+            background: #fffafb;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        
+        .contact-method:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-method i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-method h3 {
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-method a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-method a:hover {
+            color: var(--primary-color);
+        }
+        
+        footer {
+            background: linear-gradient(135deg, #ffd1dc 0%, #ffa8ba 100%);
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+            color: var(--secondary-color);
+        }
+        
+        .social-links {
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Mobile Navigation */
+        .mobile-nav {
+            display: none;
+            width: 100%;
+            background: white;
+            padding: 1rem;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .mobile-nav.active {
+            display: block;
+        }
+        
+        .mobile-nav .contact-info {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .contact-info {
+                display: none;
+            }
+            
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                right: 1rem;
+                top: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .products {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .product-info {
+                padding: 1rem;
+            }
+            
+            .policy {
+                padding: 1rem;
+            }
+            
+            .policy-item {
+                padding-left: 1rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-methods {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 2rem 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            
+            .product-img {
+                height: 180px;
+            }
+            
+            .checkout-item {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .checkout-section {
+                padding: 1rem;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to Mini Women</h1>
-    <p>This is the index page.</p>
+    <header>
+        <div class="nav-container">
+            <div class="logo-container">
+                <div class="logo">
+                    <span class="logo-icon">🌸</span> MiniWoven
+                </div>
+                <div class="tagline">Crafted with heart, woven with joy</div>
+            </div>
+            
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="contact-info">
+                <a href="https://instagram.com/phetogo_seromo" target="_blank">
+                    <i class="fab fa-instagram"></i> @phetogo_seromo
+                </a>
+                <a href="https://wa.me/27678783136" target="_blank">
+                    <i class="fab fa-whatsapp"></i> 067 878 3136
+                </a>
+                <a href="https://tiktok.com/@phetogo336" target="_blank">
+                    <i class="fab fa-tiktok"></i> @phetogo336
+                </a>
+            </div>
+            
+            <div class="cart-icon" onclick="toggleCheckout()">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </div>
+        
+        <div class="mobile-nav" id="mobileNav">
+            <div class="contact-info">
+                <a href="https://instagram.com/phetogo_seromo" target="_blank">
+                    <i class="fab fa-instagram"></i> @phetogo_seromo
+                </a>
+                <a href="https://wa.me/27678783136" target="_blank">
+                    <i class="fab fa-whatsapp"></i> 067 878 3136
+                </a>
+                <a href="https://tiktok.com/@phetogo336" target="_blank">
+                    <i class="fab fa-tiktok"></i> @phetogo336
+                </a>
+                <a href="https://yaga.co.za/users/phetogo-seromo" target="_blank">
+                    <i class="fas fa-store"></i> Yaga: @phetogo-seromo
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section class="hero fade-in">
+            <h1>Handcrafted Crochet Creations</h1>
+            <p>Discover our unique collection of handmade crochet items, each crafted with love and attention to detail.</p>
+            <a href="#products" class="btn">Explore Our Products</a>
+        </section>
+        
+        <section class="about-section fade-in">
+            <h2><i class="fas fa-heart"></i> About MiniWoven</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>MiniWoven is a small creative brand specializing in handmade crochet items made with love, care, and attention to detail. Every piece is crafted to bring warmth, joy, and uniqueness to your life.</p>
+                    
+                    <div class="offerings">
+                        <h3>What We Offer:</h3>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Handmade crochet accessories</li>
+                            <li><i class="fas fa-check-circle"></i> Custom designs on request</li>
+                            <li><i class="fas fa-check-circle"></i> Thoughtfully created gifts</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="about-image">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23ffe2e9'/><circle cx='200' cy='150' r='80' fill='%23ffd1dc'/><text x='200' y='155' font-family='Arial' font-size='24' fill='%23ff6b8b' text-anchor='middle'>Crochet Art</text></svg>" alt="Crochet Art" style="width: 100%; border-radius: 8px;">
+                </div>
+            </div>
+        </section>
+        
+        <section id="products" class="products">
+            <div class="product-card fade-in">
+                <div class="product-img">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'><rect width='300' height='200' fill='%23ffe2e9'/><text x='150' y='100' font-family='Arial' font-size='20' fill='%23ff6b8b' text-anchor='middle'>Amigurumi Plushie</text></svg>" alt="Amigurumi Plushie">
+                    <div class="upload-overlay" onclick="document.getElementById('img-upload-1').click()">
+                        <i class="fas fa-camera"></i>
+                        <input type="file" id="img-upload-1" style="display: none" onchange="previewImage(this, 1)">
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Amigurumi Plushie</h3>
+                    <p>Adorable handmade crochet plushie, perfect as a gift or decoration.</p>
+                    <div class="price">R180</div>
+                    
+                    <div class="color-options">
+                        <div class="color-option selected" style="background-color: #ff6b8b;" onclick="selectColor(this, 1)"></div>
+                        <div class="color-option" style="background-color: #4ecdc4;" onclick="selectColor(this, 1)"></div>
+                        <div class="color-option" style="background-color: #ffe66d;" onclick="selectColor(this, 1)"></div>
+                    </div>
+                    
+                    <button class="add-to-cart" onclick="addToCart(1, 'Amigurumi Plushie', 180, 'pink', 'One Size')">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="product-card fade-in">
+                <div class="product-img">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'><rect width='300' height='200' fill='%23ffe2e9'/><text x='150' y='100' font-family='Arial' font-size='20' fill='%23ff6b8b' text-anchor='middle'>Crochet Beanie</text></svg>" alt="Crochet Beanie">
+                    <div class="upload-overlay" onclick="document.getElementById('img-upload-2').click()">
+                        <i class="fas fa-camera"></i>
+                        <input type="file" id="img-upload-2" style="display: none" onchange="previewImage(this, 2)">
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Crochet Beanie</h3>
+                    <p>Warm and stylish crochet beanie, perfect for the colder seasons.</p>
+                    <div class="price">R120</div>
+                    
+                    <div class="color-options">
+                        <div class="color-option selected" style="background-color: #6a0dad;" onclick="selectColor(this, 2)"></div>
+                        <div class="color-option" style="background-color: #228b22;" onclick="selectColor(this, 2)"></div>
+                        <div class="color-option" style="background-color: #36454f;" onclick="selectColor(this, 2)"></div>
+                    </div>
+                    
+                    <div class="size-options">
+                        <div class="size-option selected" onclick="selectSize(this, 2)">Adult S/M</div>
+                        <div class="size-option" onclick="selectSize(this, 2)">Adult L/XL</div>
+                    </div>
+                    
+                    <button class="add-to-cart" onclick="addToCart(2, 'Crochet Beanie', 120, 'purple', 'Adult S/M')">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="product-card fade-in">
+                <div class="product-img">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'><rect width='300' height='200' fill='%23ffe2e9'/><text x='150' y='100' font-family='Arial' font-size='20' fill='%23ff6b8b' text-anchor='middle'>Granny Square Bag</text></svg>" alt="Granny Square Bag">
+                    <div class="upload-overlay" onclick="document.getElementById('img-upload-3').click()">
+                        <i class="fas fa-camera"></i>
+                        <input type="file" id="img-upload-3" style="display: none" onchange="previewImage(this, 3)">
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Granny Square Bag</h3>
+                    <p>Colorful and trendy crochet bag made with traditional granny squares.</p>
+                    <div class="price">R250</div>
+                    
+                    <div class="color-options">
+                        <div class="color-option selected" style="background-color: #ff4500;" onclick="selectColor(this, 3)"></div>
+                        <div class="color-option" style="background-color: #ffd166;" onclick="selectColor(this, 3)"></div>
+                        <div class="color-option" style="background-color: #06d6a0;" onclick="selectColor(this, 3)"></div>
+                    </div>
+                    
+                    <button class="add-to-cart" onclick="addToCart(3, 'Granny Square Bag', 250, 'orange', 'One Size')">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="product-card fade-in">
+                <div class="product-img">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='200' viewBox='0 0 300 200'><rect width='300' height='200' fill='%23ffe2e9'/><text x='150' y='100' font-family='Arial' font-size='20' fill='%23ff6b8b' text-anchor='middle'>Baby Blanket</text></svg>" alt="Baby Blanket">
+                    <div class="upload-overlay" onclick="document.getElementById('img-upload-4').click()">
+                        <i class="fas fa-camera"></i>
+                        <input type="file" id="img-upload-4" style="display: none" onchange="previewImage(this, 4)">
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3>Baby Blanket</h3>
+                    <p>Soft and cozy crochet baby blanket, perfect for newborn gifts.</p>
+                    <div class="price">R320</div>
+                    
+                    <div class="color-options">
+                        <div class="color-option selected" style="background-color: #90e0ef;" onclick="selectColor(this, 4)"></div>
+                        <div class="color-option" style="background-color: #ffafcc;" onclick="selectColor(this, 4)"></div>
+                        <div class="color-option" style="background-color: #cdb4db;" onclick="selectColor(this, 4)"></div>
+                    </div>
+                    
+                    <div class="size-options">
+                        <div class="size-option selected" onclick="selectSize(this, 4)">Small</div>
+                        <div class="size-option" onclick="selectSize(this, 4)">Medium</div>
+                        <div class="size-option" onclick="selectSize(this, 4)">Large</div>
+                    </div>
+                    
+                    <button class="add-to-cart" onclick="addToCart(4, 'Baby Blanket', 320, 'blue', 'Small')">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+        <section class="policy">
+            <h2>Business Policy</h2>
+            
+            <div class="policy-item">
+                <h3>Deposits</h3>
+                <p>50% of the order amount must be paid upfront as a deposit before work begins.</p>
+            </div>
+            
+            <div class="policy-item">
+                <h3>Exchanges</h3>
+                <p>Exchanges are available. Any issues must be reported within 24 hours of receiving your order.</p>
+            </div>
+            
+            <div class="policy-item">
+                <h3>No Refunds</h3>
+                <p>We do not offer refunds, only exchanges.</p>
+            </div>
+        </section>
+        
+        <section class="contact-section fade-in">
+            <h2><i class="fas fa-envelope"></i> Contact Us</h2>
+            <p>Reach out to us for custom orders or any inquiries!</p>
+            
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <i class="fab fa-instagram"></i>
+                    <h3>Instagram</h3>
+                    <a href="https://instagram.com/phetogo_seromo" target="_blank">@phetogo_seromo</a>
+                </div>
+                
+                <div class="contact-method">
+                    <i class="fab fa-whatsapp"></i>
+                    <h3>WhatsApp</h3>
+                    <a href="https://wa.me/27678783136" target="_blank">067 878 3136</a>
+                </div>
+                
+                <div class="contact-method">
+                    <i class="fab fa-tiktok"></i>
+                    <h3>TikTok</h3>
+                    <a href="https://tiktok.com/@phetogo336" target="_blank">@phetogo336</a>
+                </div>
+                
+                <div class="contact-method">
+                    <i class="fas fa-store"></i>
+                    <h3>Yaga</h3>
+                    <a href="https://yaga.co.za/users/phetogo-seromo" target="_blank">@phetogo-seromo</a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="checkout-section" id="checkout-section">
+            <h2>Checkout</h2>
+            
+            <div class="checkout-items" id="checkout-items">
+                <!-- Cart items will be added here dynamically -->
+            </div>
+            
+            <div class="checkout-total">
+                <span>Total:</span>
+                <span id="checkout-total">R0.00</span>
+            </div>
+            
+            <div class="policy-item">
+                <h3>Deposit Required</h3>
+                <p>50% of the order amount must be paid upfront as a deposit before work begins.</p>
+            </div>
+            
+            <div class="payment-options">
+                <h3>Select Payment Method</h3>
+                
+                <label class="payment-option">
+                    <input type="radio" name="payment" value="credit-card" onchange="selectPayment(this)">
+                    <i class="fas fa-credit-card"></i> Credit/Debit Card
+                </label>
+                
+                <label class="payment-option">
+                    <input type="radio" name="payment" value="paypal" onchange="selectPayment(this)">
+                    <i class="fab fa-paypal"></i> PayPal
+                </label>
+                
+                <label class="payment-option">
+                    <input type="radio" name="payment" value="bank-transfer" onchange="selectPayment(this)">
+                    <i class="fas fa-university"></i> Bank Transfer
+                </label>
+            </div>
+            
+            <button class="btn" style="width: 100%; margin-top: 1.5rem;" onclick="processPayment()">Pay Deposit (50%)</button>
+        </section>
+        
+        
+    </div>
+    
+    <footer>
+        <div class="logo">🌸 MiniWoven</div>
+        <p>Crafted with heart, woven with joy</p>
+        
+        <div class="social-links">
+            <a href="https://instagram.com/phetogo_seromo" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/27678783136" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://tiktok.com/@phetogo336" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://yaga.co.za/users/phetogo-seromo" target="_blank"><i class="fas fa-store"></i></a>
+        </div>
+        
+        <p>&copy; 2025 MiniWoven. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        let cart = [];
+        let selectedColors = {
+            1: 'pink',
+            2: 'purple',
+            3: 'orange',
+            4: 'blue'
+        };
+        let selectedSizes = {
+            1: 'One Size',
+            2: 'Adult S/M',
+            3: 'One Size',
+            4: 'Small'
+        };
+        
+        // Toggle mobile menu
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('mobileNav').classList.toggle('active');
+        });
+        
+        function selectColor(element, productId) {
+            // Remove selected class from all color options for this product
+            const colorOptions = element.parentElement.querySelectorAll('.color-option');
+            colorOptions.forEach(option => option.classList.remove('selected'));
+            
+            // Add selected class to clicked option
+            element.classList.add('selected');
+            
+            // Update selected color
+            selectedColors[productId] = window.getComputedStyle(element).backgroundColor;
+        }
+        
+        function selectSize(element, productId) {
+            // Remove selected class from all size options for this product
+            const sizeOptions = element.parentElement.querySelectorAll('.size-option');
+            sizeOptions.forEach(option => option.classList.remove('selected'));
+            
+            // Add selected class to clicked option
+            element.classList.add('selected');
+            
+            // Update selected size
+            selectedSizes[productId] = element.textContent;
+        }
+        
+        function addToCart(productId, productName, price, defaultColor, defaultSize) {
+            const color = selectedColors[productId] || defaultColor;
+            const size = selectedSizes[productId] || defaultSize;
+            
+            // Check if product already in cart
+            const existingItemIndex = cart.findIndex(item => 
+                item.productId === productId && 
+                item.color === color && 
+                item.size === size
+            );
+            
+            if (existingItemIndex !== -1) {
+                // Increment quantity if already in cart
+                cart[existingItemIndex].quantity++;
+            } else {
+                // Add new item to cart
+                cart.push({
+                    productId,
+                    productName,
+                    price,
+                    color,
+                    size,
+                    quantity: 1
+                });
+            }
+            
+            // Update cart count
+            updateCartCount();
+            
+            // Show confirmation
+            alert(`${productName} added to cart!`);
+        }
+        
+        function updateCartCount() {
+            const cartCount = document.querySelector('.cart-count');
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
+        }
+        
+        function toggleCheckout() {
+            const checkoutSection = document.getElementById('checkout-section');
+            
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            
+            if (checkoutSection.style.display === 'block') {
+                checkoutSection.style.display = 'none';
+            } else {
+                checkoutSection.style.display = 'block';
+                updateCheckoutItems();
+                // Scroll to checkout section
+                checkoutSection.scrollIntoView({behavior: 'smooth'});
+            }
+        }
+        
+        function updateCheckoutItems() {
+            const checkoutItems = document.getElementById('checkout-items');
+            const checkoutTotal = document.getElementById('checkout-total');
+            
+            // Clear current items
+            checkoutItems.innerHTML = '';
+            
+            // Add items to checkout
+            let total = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                const itemElement = document.createElement('div');
+                itemElement.className = 'checkout-item';
+                itemElement.innerHTML = `
+                    <div>
+                        <strong>${item.productName}</strong>
+                        <div>Color: ${item.color}</div>
+                        <div>Size: ${item.size}</div>
+                    </div>
+                    <div>
+                        <div>${item.quantity} x R${item.price}</div>
+                        <strong>R${itemTotal}</strong>
+                    </div>
+                `;
+                
+                checkoutItems.appendChild(itemElement);
+            });
+            
+            // Update total
+            checkoutTotal.textContent = `R${total}`;
+        }
+        
+        function selectPayment(element) {
+            // Remove selected class from all payment options
+            const paymentOptions = document.querySelectorAll('.payment-option');
+            paymentOptions.forEach(option => option.classList.remove('selected'));
+            
+            // Add selected class to parent label
+            element.parentElement.classList.add('selected');
+        }
+        
+        function processPayment() {
+            const selectedPayment = document.querySelector('input[name="payment"]:checked');
+            
+            if (!selectedPayment) {
+                alert('Please select a payment method');
+                return;
+            }
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const deposit = total * 0.5;
+            
+            alert(`Redirecting to ${selectedPayment.value.toUpperCase()} payment page for deposit of R${deposit}`);
+            
+            // In a real implementation, this would redirect to a payment gateway
+        }
+        
+        function previewImage(input, productId) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    const productImg = document.querySelector(`.product-card:nth-child(${productId}) .product-img img`);
+                    productImg.src = e.target.result;
+                }
+                
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        
+        // Close mobile nav when clicking outside
+        document.addEventListener('click', function(event) {
+            const mobileNav = document.getElementById('mobileNav');
+            const menuToggle = document.getElementById('menuToggle');
+            
+            if (mobileNav.classList.contains('active') && 
+                !mobileNav.contains(event.target) && 
+                !menuToggle.contains(event.target)) {
+                mobileNav.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
